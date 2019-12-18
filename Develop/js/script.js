@@ -2,9 +2,36 @@ $(document).ready(function() {
 
     var timeBlocks = [];
 
-    storeHours();
-    renderDescriptions();
-    
+    init();
+
+    function init() {
+        $("#currentDay").text(moment().format("dddd, MMMM Do"));
+
+        storeHours();
+        renderDescriptions();
+    }
+
+    function determineHourState() {
+        timeBlocks.forEach(function(hour) {
+            var timeSlotHour = moment().hour(hour);
+            var timeSlotContainer = $(".container");
+            if ((moment().isAfter(timeSlotHour))) {
+                timeSlotContainer.find("#" + hour).addClass("past");
+            } else if ((moment().isBefore(timeSlotHour))) {
+                timeSlotContainer.find("#" + hour).addClass("future");
+            } else {
+                timeSlotContainer.find("#" + hour).addClass("present");
+            }
+        });
+    }
+
+    function storeHours() {
+        $(".time-block").each(function(i, element) {
+            timeBlocks.push($(element).attr("id"));
+        });
+        determineHourState();
+    }
+
     function renderDescriptions() {
         for (var i = 0; i < localStorage.length; i++) {
             var key = localStorage.key(i);
@@ -13,37 +40,16 @@ $(document).ready(function() {
         };
     }
 
-    function storeHours() {
-        $("#currentDay").text(moment().format("dddd, MMMM Do"));
-        $('.time-block').each(function(i,element) {
-            timeBlocks.push($(element).attr('id'));
-        });
-        determinePresentHour();
-    }
-
-    function determinePresentHour() {
-        timeBlocks.forEach(function(hour) {
-            var timeSlotHour = moment().hour(hour);
-            if ((moment().isAfter(timeSlotHour))) {
-                $(".container").find("#"+hour).addClass('past');
-            } else if ((moment().isBefore(timeSlotHour))) {
-                $(".container").find("#"+hour).addClass('future');
-            } else {
-                $(".container").find("#"+hour).addClass('present');
-            }
-        });
-    }
-
     $(".button-save").on("click", function(event) {
         event.preventDefault();
         var description = $(this).siblings(".description").val().trim();
         var hour = $(this).parent().attr("id");
-        localStorage.setItem(hour, description);
 
-
-        if (description === "") {
+        if (description == "") {
             return
         }
+
+        localStorage.setItem(hour, description);
         renderDescriptions();
     });
 
