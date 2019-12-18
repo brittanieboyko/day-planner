@@ -71,11 +71,4 @@ body {
     font-size: 20px;
     transition: all .3s ease-in-out;
   }
-
-  @media all and (max-width:30em){
-     .button-save {
-      display:block;
-      margin:0.4em auto;
-    }
-  }
   
