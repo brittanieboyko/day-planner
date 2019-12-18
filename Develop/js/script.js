@@ -1,46 +1,50 @@
 $(document).ready(function() {
 
-    var descriptions = [];
     var timeBlocks = [];
 
     storeHours();
+    renderDescriptions();
     
-    function storeDescriptions() {
-        localStorage.setItem("descriptions", descriptions);
+    function renderDescriptions() {
+        for (var i = 0; i < localStorage.length; i++) {
+            var key = localStorage.key(i);
+            var descriptionText = localStorage.getItem(key);
+            $(".container").find("#"+key+" textarea").val(descriptionText);
+        };
     }
 
     function storeHours() {
+        $("#currentDay").text(moment().format("dddd, MMMM Do"));
         $('.time-block').each(function(i,element) {
             timeBlocks.push($(element).attr('id'));
         });
-        determineHour();
+        determinePresentHour();
     }
 
-    function determineHour() {
+    function determinePresentHour() {
         timeBlocks.forEach(function(hour) {
-            var timeSlot = moment().hour(hour);
-            if ((moment().isAfter(timeSlot))) {
+            var timeSlotHour = moment().hour(hour);
+            if ((moment().isAfter(timeSlotHour))) {
                 $(".time-block").find("#("+hour+")").addClass('past');
-            } else if ((moment().isBefore(timeSlot))) {
+            } else if ((moment().isBefore(timeSlotHour))) {
                 $(".container").find("#"+hour).addClass('future');
             } else {
                 $(".container").find("#"+hour).addClass('present');
             }
-        })
+        });
     }
 
     $(".button-save").on("click", function(event) {
         event.preventDefault();
         var description = $(this).siblings(".description").val().trim();
-        var index = $(this).parent().data("index");
+        var hour = $(this).parent().attr("id");
+        localStorage.setItem(hour, description);
+
 
         if (description === "") {
             return
         }
-        descriptions.push({description: description, index : index});
-
-        storeDescriptions();
+        renderDescriptions();
     });
 
-    $("#currentDay").text(moment().format("dddd, MMMM Do"));
 });
