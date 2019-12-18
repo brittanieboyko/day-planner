@@ -1,7 +1,8 @@
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Inria Serif', serif;
     font-size: 16px;
     line-height: 1;
+    background-color: #ededed;
   }
   
   textarea{
@@ -37,36 +38,44 @@ body {
   }
   
   .hour {
-    background-color: #ffffff;
+    background-color: #D0E1F9;
     color: #000000;
-    border-top: 1px dashed #000000;
+    border-top: 1px solid #1E1F26;
+    padding: 10px;
   }
   
   .past {
-    background-color: chartreuse;
+    background-color: #4D648D;
     color: white;
   }
   
   .present {
-    background-color: #ff6961;
+    background-color: #D0E1F9;
     color: white;
   }
   
   .future {
-    background-color: #77dd77;
+    background-color: #283655;
     color: white;
   }
   
-  .saveBtn {
-    border-left: 1px solid black;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
-    background-color: #06AED5;
+  .button-save {
+    border-left: 1px solid #1E1F26;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: #1E1F26;
     color: white;
   }
   
-  .saveBtn i:hover {
+  .button-save i:hover {
     font-size: 20px;
     transition: all .3s ease-in-out;
+  }
+
+  @media all and (max-width:30em){
+     .button-save {
+      display:block;
+      margin:0.4em auto;
+    }
   }
   
