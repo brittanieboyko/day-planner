@@ -25,7 +25,7 @@ $(document).ready(function() {
         timeBlocks.forEach(function(hour) {
             var timeSlotHour = moment().hour(hour);
             if ((moment().isAfter(timeSlotHour))) {
-                $(".time-block").find("#("+hour+")").addClass('past');
+                $(".container").find("#"+hour).addClass('past');
             } else if ((moment().isBefore(timeSlotHour))) {
                 $(".container").find("#"+hour).addClass('future');
             } else {
