@@ -1,4 +1,6 @@
-# Work Day Planner
+# Work Day Scheduler
+
+
  
 ![day-planner](resources/images/workDayPlanner.png)
 
