@@ -2,14 +2,15 @@ body {
     font-family: 'Inria Serif', serif;
     font-size: 16px;
     line-height: 1;
-    background-color: #ededed;
+    background-color: #F9F9FF;
+    
   }
   
   textarea{
     background: transparent;
     border: none;
     resize: none;
-    color: #000000;
+    color: #232122;
     border-left: 1px solid black;
     padding: 10px;
   }
@@ -17,9 +18,9 @@ body {
   .jumbotron {
     text-align: center;
     background-color: transparent;
-    color: black;
+    color: #232122;
     border-radius: 0;
-    border-bottom: 10px solid black;
+    border-bottom: 10px solid #232122;
   }
   
   .description{
@@ -38,32 +39,32 @@ body {
   }
   
   .hour {
-    background-color: #D0E1F9;
+    background-color: #F9F9FF;
     color: #000000;
-    border-top: 1px solid #1E1F26;
+    border-top: 1px solid #DDDEDE;
     padding: 10px;
   }
   
   .past {
-    background-color: #4D648D;
+    background-color: #DDDEDE;
     color: white;
   }
   
   .present {
-    background-color: #D0E1F9;
+    background-color: #A5C05B;
     color: white;
   }
   
   .future {
-    background-color: #283655;
+    background-color: #7BA4A8;
     color: white;
   }
   
   .button-save {
-    border-left: 1px solid #1E1F26;
+    border-left: 1px solid #232122;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-    background-color: #1E1F26;
+    background-color: #232122;;
     color: white;
   }
   
